@@ -1,0 +1,21 @@
+#!/bin/bash -l
+### bash users replace /tcsh with /bash -l
+#PBS -N count_instensity
+#PBS -A UMCP0026
+#PBS -l walltime=12:00:00
+#PBS -q main
+#PBS -j oe
+#PBS -k eod
+#PBS -m abe
+#PBS -M jchen137@umd.edu
+#PBS -l select=1:ncpus=1:mpiprocs=1
+#PBS -l job_priority=premium
+
+### Set TMPDIR as recommended
+export TMPDIR=/glade/work/$USER/temp
+mkdir -p $TMPDIR
+module load ncl
+
+### Run the executable
+ncl intensity_time_series_count.ncl
+

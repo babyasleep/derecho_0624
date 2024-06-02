@@ -1,0 +1,20 @@
+#!/bin/bash -l
+### bash users replace /tcsh with /bash -l
+#PBS -N vertical_shading_plot
+#PBS -A UMCP0026
+#PBS -l walltime=01:00:00
+#PBS -q main
+#PBS -j oe
+#PBS -k eod
+#PBS -m abe
+#PBS -M jchen137@umd.edu
+#PBS -l select=1:ncpus=1:mpiprocs=1
+#PBS -l job_priority=premium
+
+### Set TMPDIR as recommended
+export TMPDIR=/glade/work/$USER/temp
+mkdir -p $TMPDIR
+module load ncl
+
+### Run the executable
+ncl outer_vertical_profile.ncl
